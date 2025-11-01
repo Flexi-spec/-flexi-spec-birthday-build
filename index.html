@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexi-Spec Birthday Build</title>
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flexi-spec.github.io/flexi-spec-birthday-build/">
+  <meta property="og:title" content="Flexi-Spec Birthday Build">
+  <meta property="og:description" content="Join the Nov 14–16 web challenge and showcase your skills! Winner announced on Nov 17!">
+  <meta property="og:image" content="https://flexi-spec.github.io/flexi-spec-birthday-build/piv.jpg">
+  <meta property="og:image:alt" content="Flexi's Profile Picture">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://flexi-spec.github.io/flexi-spec-birthday-build/">
+  <meta name="twitter:title" content="Flexi-Spec Birthday Build">
+  <meta name="twitter:description" content="Join the Nov 14–16 web challenge and showcase your skills! Winner announced on Nov 17!">
+  <meta name="twitter:image" content="https://flexi-spec.github.io/flexi-spec-birthday-build/piv.jpg">
+
+  <!-- Fallback description -->
+  <meta name="description" content="Flexi-Spec Birthday Build — Web challenge from Nov 14–16. Showcase your skills and be part of the celebration!">
+
+  <!-- Optional favicon -->
+  <link rel="icon" href="https://flexi-spec.github.io/flexi-spec-birthday-build/favicon.ico" type="image/x-icon">
+  <title>Flexi-Spec Birthday Build</title>
+  <style>
+    /* Reset & base */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background:#0d0d0d; color:#f2f2f2; line-height:1.6; }
+
+    /* Navbar */
+    nav { position:fixed; top:0; width:100%; background:rgba(13,13,13,0.95); display:flex; justify-content:center; z-index:1000; padding:12px 0; backdrop-filter:blur(6px);}
+    nav a { color:#b68cff; text-decoration:none; margin:0 20px; font-weight:600; transition:0.3s; }
+    nav a:hover { color:#d8a0ff; }
+
+    /* Sections */
+    section { min-height:100vh; padding:100px 20px 50px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+    h1, h2, h3 { color:#b68cff; margin-bottom:20px; }
+    p { max-width:750px; margin-bottom:20px; color:#ccc; }
+    ul { list-style:none; margin-top:10px; padding:0; }
+    ul li { margin:10px 0; color:#ccc; cursor:pointer; }
+
+    /* Hero */
+    #home { background: url('piv.jpg') center/cover no-repeat; position:relative; width:100%; }
+    #home::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); }
+    #home .content { position:relative; z-index:2; animation:fadeIn 2s ease forwards; display:flex; flex-direction:column; align-items:center; }
+    #home h1 { font-size:3rem; margin-bottom:15px; text-shadow:0 0 20px #b68cff; }
+    #home .timer { margin-top:20px; font-size:1.5rem; padding:12px 25px; background:rgba(182,140,255,0.1); border-radius:12px; color:#d8a0ff; font-weight:bold; text-shadow:0 0 10px #b68cff; box-shadow:0 0 20px #b68cff inset; }
+
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+    /* About Section */
+    #about { padding:120px 20px 60px; }
+    #about p { max-width:800px; margin:15px auto; font-size:1.1rem; }
+
+    /* Portfolio / Projects */
+    #portfolio { padding:120px 20px 60px; }
+    .portfolio { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:25px; margin-top:25px; width:100%; max-width:1200px; }
+    .project { background:#1a1a1a; padding:20px; border-radius:12px; transition:0.3s; border:2px solid transparent; cursor:pointer; }
+    .project:hover { transform:translateY(-5px); box-shadow:0 0 25px #b68cff; border-color:#d8a0ff; }
+
+    /* Contact Section */
+    #contact { padding:120px 20px 60px; }
+    .contact p { margin-bottom:20px; }
+    .contact a { color:#b68cff; text-decoration:none; font-weight:bold; transition:0.3s; }
+    .contact a:hover { color:#d8a0ff; }
+
+    /* Confetti */
+    #confetti { position:fixed; top:0; left:0; pointer-events:none; z-index:500; }
+
+    footer { text-align:center; padding:20px 0; color:#aaa; margin-top:40px; }
+    footer span { color:#b68cff; }
+
+    /* Scroll animation */
+    section { opacity:0; transform:translateY(20px); transition:1s ease; }
+    section.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home">
+    <div class="content">
+      <h1>🎉 Flexi-Spec Birthday Build 🎉</h1>
+      <p>Join the <strong>Nov 14–16</strong> web challenge and showcase your skills! Winner announced on my birthday, Nov 17!</p>
+      <div class="timer" id="countdown">Loading countdown...</div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <p>The Flexi-Spec Birthday Build is a community challenge aimed at designers, developers, and creators.  
+    Over three days, participants craft micro-projects, tools, or portfolio templates to demonstrate creativity and coding finesse.</p>
+    <p>This is not just a competition — it’s a celebration of learning, building, and sharing your work publicly with a supportive community.</p>
+  </section>
+
+  <!-- Portfolio / Projects -->
+  <section id="portfolio">
+    <h2>Portfolio / Project Ideas</h2>
+    <div class="portfolio">
+      <div class="project" onclick="sendWhatsApp('Micro SaaS Landing')">
+        <h3>Micro SaaS Landing</h3>
+        <p>Build a sleek one-page product site with signup or pre-order functionality.</p>
+      </div>
+      <div class="project" onclick="sendWhatsApp('Local Helper App')">
+        <h3>Local Helper App</h3>
+        <p>Small web tool to connect people to local services or resources.</p>
+      </div>
+      <div class="project" onclick="sendWhatsApp('Tiny Utility Tool')">
+        <h3>Tiny Utility Tool</h3>
+        <p>Simple helpful tool like QR generator, password helper, or color palette creator.</p>
+      </div>
+      <div class="project" onclick="sendWhatsApp('Data Visualization Story')">
+        <h3>Data Visualization Story</h3>
+        <p>Visualize a dataset and tell a compelling story through charts and graphics.</p>
+      </div>
+      <div class="project" onclick="sendWhatsApp('Portfolio Template')">
+        <h3>Portfolio Template</h3>
+        <p>Create a clean, responsive template to showcase your creative or coding projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact / Support</h2>
+    <p>Want to support the challenge or reach me directly? Send me a WhatsApp message:</p>
+    <p><a href="https://wa.me/2347037197124" target="_blank">Chat on WhatsApp: +2347037197124</a></p>
+  </section>
+
+  <canvas id="confetti"></canvas>
+
+  <footer>
+    © 2025 <span>Flexi-Spec Birthday Build</span> — Celebrating creativity & growth.
+  </footer>
+
+  <script>
+    // Countdown
+    const countdownEl = document.getElementById("countdown");
+    function updateCountdown() {
+      const now = new Date();
+      const startDate = new Date("Nov 14, 2025 00:00:00");
+      const endDate = new Date("Nov 16, 2025 23:59:59");
+
+      if(now < startDate){
+        countdownEl.innerText = "Challenge begins soon! Get ready!";
+        return;
+      }
+
+      const timeLeft = endDate - now;
+      if(timeLeft <=0){
+        countdownEl.innerText = "Challenge ended! Winner announced on Nov 17! 🎉";
+        return;
+      }
+
+      const days = Math.floor(timeLeft/(1000*60*60*24));
+      const hours = Math.floor((timeLeft%(1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((timeLeft%(1000*60*60))/(1000*60));
+      const seconds = Math.floor((timeLeft%(1000*60))/1000);
+
+      const birthday = new Date("Nov 17, 2025 00:00:00");
+      const nextDay = new Date("Nov 18, 2025 00:00:00");
+
+      if(now >= birthday && now < nextDay){
+        countdownEl.innerText = `🔥 Happy Birthday Flexi-Spec! 🎉 — Winner announced today!`;
+      } else {
+        countdownEl.innerText = `Time left until challenge ends: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }
+    setInterval(updateCountdown,1000);
+    updateCountdown();
+
+    // Confetti
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles=[];
+    function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight;}
+    window.addEventListener('resize',resizeCanvas);
+    resizeCanvas();
+    function createConfetti(){
+      const colors=['#b68cff','#d8a0ff','#8c5aff'];
+      for(let i=0;i<150;i++){
+        confettiParticles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:Math.random()*6+2,d:Math.random()*150+50,color:colors[Math.floor(Math.random()*colors.length)],tilt:Math.random()*10-10,tiltAngleIncremental:(Math.random()*0.07)+0.05});
+      }
+    }
+    function drawConfetti(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confettiParticles.forEach(p=>{ctx.beginPath();ctx.lineWidth=p.r;ctx.strokeStyle=p.color;ctx.moveTo(p.x+p.tilt+p.r/2,p.y);ctx.lineTo(p.x+p.tilt,p.y+p.tilt+p.r/2);ctx.stroke();});
+      updateConfetti();
+    }
+    function updateConfetti(){
+      confettiParticles.forEach((p,index)=>{
+        p.tiltAngleIncremental+=0.01;
+        p.y+=(Math.cos(p.d)+3+p.r/2)*0.5;
+        p.tilt=Math.sin(p.tiltAngleIncremental)*15;
+        if(p.y>canvas.height){
+          confettiParticles[index]={x:Math.random()*canvas.width,y:-10,r:p.r,d:p.d,color:p.color,tilt:Math.random()*10-10,tiltAngleIncremental:p.tiltAngleIncremental};
+        }
+      });
+    }
+    function animateConfetti(){drawConfetti();requestAnimationFrame(animateConfetti);}
+    function startConfetti(){createConfetti();animateConfetti();}
+    function checkBirthdayConfetti(){
+      const now=new Date();
+      const birthday=new Date("Nov 17,2025 00:00:00");
+      const nextDay=new Date("Nov 18,2025 00:00:00");
+      if(now>=birthday&&now<nextDay&&confettiParticles.length===0){startConfetti();}
+    }
+    checkBirthdayConfetti();
+    setInterval(checkBirthdayConfetti,1000);
+
+    // Scroll animations
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting){entry.target.classList.add('visible');} });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // WhatsApp project interaction
+    function sendWhatsApp(projectName) {
+      const name = prompt("Enter your name to send a message:");
+      if (!name) return;
+      const message = `Hi Flexi! My name is ${name} and I want to build: ${projectName}`;
+      const phone = "2347037197124"; // Your WhatsApp number
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+
+</body>
+</html>
